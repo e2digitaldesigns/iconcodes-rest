@@ -17,6 +17,5 @@ dbConnector();
 routing(app);
 
 app.get("/", async (req: Request, res: Response) => {
-  console.log(res.locals.userId);
   res.send("iConCodes: REST Service");
 });
