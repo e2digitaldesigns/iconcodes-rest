@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 const ObjectId = mongoose.Types.ObjectId;
 
 export const verifyApiKey = async (req: Request, res: Response, next: NextFunction) => {
+  console.log("Verifying API Key");
+  console.log(req.query.apiKey);
   try {
     if (!req.query.apiKey) {
       throw new Error("API Key is missing");
