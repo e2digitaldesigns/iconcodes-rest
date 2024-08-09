@@ -5,12 +5,12 @@ const ObjectId = mongoose.Types.ObjectId;
 
 export const verifyApiKey = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    if (!req.query.apiKey) {
+    if (!req.headers.authorization) {
       throw new Error("API Key is missing");
     }
 
     const user = await UserModel.findOne({
-      _id: new ObjectId(req.query.apiKey as string),
+      _id: new ObjectId(req.headers.authorization as string),
       allowAccess: true
     });
 
